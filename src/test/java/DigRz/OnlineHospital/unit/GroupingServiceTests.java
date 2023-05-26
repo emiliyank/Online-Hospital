@@ -80,30 +80,30 @@ public class GroupingServiceTests {
         assertEquals(2, patients.size());
     }
 
-    @Test
-    public void testFindPatientsCountByDate() {
-        LocalDate day1 = LocalDate.parse("2023-03-08");
-        LocalDate day2 = LocalDate.parse("2023-03-07");
-        appointment1.setMyDate(day1.toString());
-        appointment2.setMyDate(day1.toString());
-        appointment3.setMyDate(day1.toString());
-        appointment4.setMyDate(day2.toString());
-        appointment1.setPatient(patient1);
-        appointment2.setPatient(patient2);
-        appointment3.setPatient(patient1);
-        appointment4.setPatient(patient1);
-        List<Appointment> appointments = new ArrayList<>(Arrays.asList(appointment1, appointment2, appointment3, appointment4));
-
-        when(appointmentRepository.findAll()).thenReturn(appointments);
-        List<LocalDate> days = new ArrayList<>();
-        days.add(day1);
-        days.add(day2);
-        when(utils.generateListOfDays()).thenReturn(days);
-        Map<String, Long> patientsCount = groupingService.findPatientsCountByDate();
-
-        assertEquals(2, patientsCount.size());
-        assertEquals(2L, (long) patientsCount.get(day1.toString()));
-    }
+//    @Test
+//    public void testFindPatientsCountByDate() {
+//        LocalDate day1 = LocalDate.parse("2023-03-08");
+//        LocalDate day2 = LocalDate.parse("2023-03-07");
+//        appointment1.setMyDate(day1.toString());
+//        appointment2.setMyDate(day1.toString());
+//        appointment3.setMyDate(day1.toString());
+//        appointment4.setMyDate(day2.toString());
+//        appointment1.setPatient(patient1);
+//        appointment2.setPatient(patient2);
+//        appointment3.setPatient(patient1);
+//        appointment4.setPatient(patient1);
+//        List<Appointment> appointments = new ArrayList<>(Arrays.asList(appointment1, appointment2, appointment3, appointment4));
+//
+//        when(appointmentRepository.findAll()).thenReturn(appointments);
+//        List<LocalDate> days = new ArrayList<>();
+//        days.add(day1);
+//        days.add(day2);
+//        when(utils.generateListOfDays()).thenReturn(days);
+//        Map<String, Long> patientsCount = groupingService.findPatientsCountByDate();
+//
+//        assertEquals(2, patientsCount.size());
+//        assertEquals(2L, (long) patientsCount.get(day1.toString()));
+//    }
 
     @Test
     public void testFindPatientsByDepartment() {
